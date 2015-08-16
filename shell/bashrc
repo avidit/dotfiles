@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+
+# Load RVM into a shell session *as a function*
+[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+
+# Load dotfiles
+[[ -f $HOME/dotfiles/shell/env ]] && source $HOME/dotfiles/shell/env
+[[ -f $HOME/dotfiles/shell/aliases ]] && source $HOME/dotfiles/shell/aliases
+[[ -f $HOME/dotfiles/shell/functions ]] && source $HOME/dotfiles/shell/functions
+
+# load brew formula
+[[ -f $(brew --prefix)/etc/bash_completion ]] && source $(brew --prefix)/etc/bash_completion
+[[ -s $(brew --prefix)/etc/profile.d/z.sh ]] && source $(brew --prefix)/etc/profile.d/z.sh
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && source $(brew --prefix)/etc/profile.d/autojump.sh
+
+# bash_it configuration
+[[ -d $HOME/.bash_it ]] && export BASH_IT=$HOME/.bash_it
+export BASH_IT_THEME='powerline'
+source $BASH_IT/bash_it.sh
