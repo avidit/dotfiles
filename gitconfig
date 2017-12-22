@@ -1,0 +1,33 @@
+[user]
+	name = avidit
+	email = aabishkar@gmail.com
+	signingkey = 841E7FC3D932A8A7
+[credential]
+	helper = osxkeychain
+[core]
+	autocrlf = input
+	editor = vim
+	excludesfile = ~/.gitignore_global
+[mergetool]
+	keepBackup = true
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+[help]
+	autocorrect = 1
+[log]
+    abbrevCommit = true
+    decorate = true
+[format]
+    pretty = %C(yellow)%h%C(white)%d%Creset %s %C(cyan)(%cr) %C(bold blue)<%an>%Creset
+[color]
+	ui = auto
+[alias]
+	co = checkout
+	cm = commit
+	st = status -s
+	br = branch
+	un = reset --hard HEAD
+	am = commit --amend -a
+	gr = log --graph

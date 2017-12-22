@@ -1,27 +1,3 @@
-"VUndle starts-----------------------------
-if has('vim_starting')
-  if &compatible
-    :set nocompatible          " Be iMproved
-  endif
-endif
-filetype off
-
-" set the runtime path to include Vundle and initialize
-:set rtp+=~/dotfiles/vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-fugitive'
-Plugin 'bling/vim-airline'
-Plugin 'altercation/vim-colors-solarized'
-
-call vundle#end()            " required
-filetype plugin indent on    " required
-"Vundle Ends-------------------------------
-
 :syntax on
 :colorscheme desert
 :set background=dark
@@ -55,9 +31,3 @@ let g:airline_theme = 'powerlineish'
 let g:airline_powerline_fonts = 1
 let g:airline_detect_modified = 1
 let g:airline_detect_paste = 1
-
-" NERTtree settings
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-map <C-n> :NERDTreeToggle<CR>
-

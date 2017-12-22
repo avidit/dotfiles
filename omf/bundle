@@ -1,0 +1,4 @@
+package aws
+package direnv
+theme default
+theme pure
