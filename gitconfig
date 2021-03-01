@@ -31,3 +31,5 @@
 	un = reset --hard HEAD
 	am = commit --amend -a
 	gr = log --graph
+[push]
+	default = current

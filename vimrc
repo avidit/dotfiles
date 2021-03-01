@@ -2,7 +2,7 @@
 :colorscheme desert
 :set background=dark
 :set hlsearch    " highlight search
-:set ignorecase  " Do case in sensitive matching with
+:set ignorecase  " Do case insensitive matching when searching
 :set smartcase   " be sensitive when there's a capital letter
 :set nowrap
 :set textwidth=0                   " Don't wrap lines by default
@@ -21,8 +21,7 @@
 :set noerrorbells   " No noise
 :set foldenable     " Turn on folding
 :set mouse=a
-:set wildmode=longest,list
-:set wildmenu
+:set wildmenu       " Turn on the Wild menu
 
 " vim-airline settings
 let g:airline#extensions#syntastic#enabled = 1

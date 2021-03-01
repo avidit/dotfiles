@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # set Editor
 export EDITOR=vim
 
