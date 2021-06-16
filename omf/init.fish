@@ -14,9 +14,6 @@ set -x PATH $JAVA_HOME/bin $PATH
 set -x PATH $NODE_PATH $PATH
 set -x PATH $GOROOT $PATH
 set -x PATH (go env GOPATH)/bin $PATH
-set -x PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
-
-set -x MANPATH /usr/local/opt/coreutils/libexec/gnuman $MANPATH
 
 # Load brew formula
 [ -f (brew --prefix)/share/autojump/autojump.fish ]; and source (brew --prefix)/share/autojump/autojump.fish

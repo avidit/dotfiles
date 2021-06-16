@@ -16,9 +16,6 @@ export PATH=$PATH:$JAVA_HOME/bin
 export PATH=$PATH:$NODE_PATH
 export PATH=$PATH:$GOROOT
 export PATH=$PATH:$(go env GOPATH)/bin
-export PATH=$PATH:/usr/local/opt/coreutils/libexec/gnubin
-
-export MANPATH=$MANPATH:/usr/local/opt/coreutils/libexec/gnuman
 
 # load brew formula
 [[ -f $(brew --prefix)/etc/profile.d/autojump.sh ]] && source $(brew --prefix)/etc/profile.d/autojump.sh
