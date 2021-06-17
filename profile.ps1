@@ -1,10 +1,9 @@
-function .. { Set-Location .. }
-function ... { Set-Location .. ; Set-Location .. }
-function home { Set-Location $env:USERPROFILE }
-
 # import modules
 Import-Module posh-git
 $GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $true
+
+# source functions
+. $HOME\dotfiles\functions.ps1
 
 # source custom scripts
 $PSScripts = "$HOME\PSScripts"
