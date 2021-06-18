@@ -29,8 +29,12 @@ Write-Host "Configuring System..." -ForegroundColor "Yellow"
 
 # Enable Developer Mode
 Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" "AllowDevelopmentWithoutDevLicense" 1
-# Bash on Windows
+
+# Enable Windows Subsystem for Linux
 Enable-WindowsOptionalFeature -Online -All -FeatureName "Microsoft-Windows-Subsystem-Linux" -NoRestart -WarningAction SilentlyContinue | Out-Null
+
+# Enable Hyper-V and Containers
+Enable-WindowsOptionalFeature -Online -All -FeatureName $("Microsoft-Hyper-V", "Containers") -NoRestart -WarningAction SilentlyContinue | Out-Null
 
 ###############################################################################
 ### Privacy                                                                   #
@@ -577,12 +581,12 @@ Write-Host "Configuring Console..." -ForegroundColor "Yellow"
 # Set-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Console\TrueTypeFont' 000 'Source Code Pro'
 
 @(`
-    "HKCU:\Console\%SystemRoot%_System32_bash.exe", `
-    "HKCU:\Console\%SystemRoot%_System32_WindowsPowerShell_v1.0_powershell.exe", `
-    "HKCU:\Console\%SystemRoot%_SysWOW64_WindowsPowerShell_v1.0_powershell.exe", `
-    "HKCU:\Console\Windows PowerShell (x86)", `
-    "HKCU:\Console\Windows PowerShell", `
-    "HKCU:\Console"`
+        "HKCU:\Console\%SystemRoot%_System32_bash.exe", `
+        "HKCU:\Console\%SystemRoot%_System32_WindowsPowerShell_v1.0_powershell.exe", `
+        "HKCU:\Console\%SystemRoot%_SysWOW64_WindowsPowerShell_v1.0_powershell.exe", `
+        "HKCU:\Console\Windows PowerShell (x86)", `
+        "HKCU:\Console\Windows PowerShell", `
+        "HKCU:\Console"`
 ) | ForEach-Object {
     If (!(Test-Path $_)) {
         New-Item -path $_ -ItemType Folder | Out-Null
@@ -639,21 +643,21 @@ Write-Host "Configuring Console..." -ForegroundColor "Yellow"
 
 # Customizing PoSh syntax
 # Theme: Jellybeans
-Set-PSReadlineOption -Colors @{
-    "Default"   = "#e8e8d3"
-    "Comment"   = "#888888"
-    "Keyword"   = "#8197bf"
-    "String"    = "#99ad6a"
-    "Operator"  = "#c6b6ee"
-    "Variable"  = "#c6b6ee"
-    "Command"   = "#8197bf"
-    "Parameter" = "#e8e8d3"
-    "Type"      = "#fad07a"
-    "Number"    = "#cf6a4c"
-    "Member"    = "#fad07a"
-    "Emphasis"  = "#f0a0c0"
-    "Error"     = "#902020"
-}
+# Set-PSReadlineOption -Colors @{
+#     "Default"   = "#e8e8d3"
+#     "Comment"   = "#888888"
+#     "Keyword"   = "#8197bf"
+#     "String"    = "#99ad6a"
+#     "Operator"  = "#c6b6ee"
+#     "Variable"  = "#c6b6ee"
+#     "Command"   = "#8197bf"
+#     "Parameter" = "#e8e8d3"
+#     "Type"      = "#fad07a"
+#     "Number"    = "#cf6a4c"
+#     "Member"    = "#fad07a"
+#     "Emphasis"  = "#f0a0c0"
+#     "Error"     = "#902020"
+# }
 
 # Remove property overrides from PowerShell and Bash shortcuts
 # Reset-AllPowerShellShortcuts
