@@ -25,10 +25,10 @@ fi
 ln -fs "$DOTFILES/$file" "$HOME/.$file"
 done
 
-# oh my fish config
-if [ -d "$OMF_CONFIG" ]
+fish_config_file="$HOME/.config/fish/config.fish"
+if [ -f "$fish_config_file" ]
 then
-    echo "backing up existing folder $OMF_CONFIG"
-    mv "$OMF_CONFIG" "${OMF_CONFIG}.bak"
+    echo "backing up existing file $fish_config_file"
+    mv "$fish_config_file" "${fish_config_file}.bak"
 fi
-ln -fs "$DOTFILES/omf" "$HOME/.config/omf"
+ln -fs "$DOTFILES/config.fish" "$fish_config_file"
