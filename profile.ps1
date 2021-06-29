@@ -1,6 +1,9 @@
 # import modules
 Import-Module posh-git
 $GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $true
+$GitPromptSettings.EnableFileStatus = $false
+
+Import-Module ZLocation
 
 # https://github.com/dracula/powershell/blob/master/theme/dracula-prompt-configuration.ps1
 # Dracula readline configuration. Requires version 2.0, if you have 1.2 convert to `Set-PSReadlineOption -TokenType`

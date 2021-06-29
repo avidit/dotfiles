@@ -30,9 +30,9 @@ Install-PackageProvider NuGet -Force
 Install-Module -Name PowerShellGet -Force
 Set-PSRepository PSGallery -InstallationPolicy Trusted
 
-Install-Module -Name PSReadLine -Scope CurrentUser
 Install-Module -Name PSScriptAnalyzer -Scope CurrentUser
 Install-Module -Name posh-git -Scope CurrentUser
+Install-Module -Name ZLocation -Scope CurrentUser
 
 # dotfiles
 $files = @("gitconfig", "gitignore_global")
@@ -41,5 +41,12 @@ $files | ForEach-Object {
         Write-host "backing up existing file $file"
         Rename-Item -Path "$HOME\.$_" -NewName "$HOME\.$_.bak" -Force
     }
-    New-Item -ItemType SymbolicLink -Path "$HOME\.$_" -Target  "$DOTFILES\$_"
+    New-Item -ItemType SymbolicLink -Path "$HOME\.$_" -Target "$DOTFILES\$_"
 }
+
+# profile
+if (Test-Path -Path $PROFILE.CurrentUserAllHosts) {
+    Write-host "backing up existing file $PROFILE.CurrentUserAllHosts"
+    Rename-Item -Path $PROFILE.CurrentUserAllHosts -NewName "$($PROFILE.CurrentUserAllHosts).bak"
+}
+New-Item -ItemType SymbolicLink -Path $PROFILE.CurrentUserAllHosts -Target "$DOTFILES\profile.ps1"

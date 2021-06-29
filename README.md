@@ -50,7 +50,7 @@ ln -s $HOME/dotfiles/bashrc .bashrc
     ```
 
     ```powershell
-    cd $HOME/dotfiles
+    cd $HOME\dotfiles
     .\setup.ps1
     ```
 
@@ -64,7 +64,8 @@ Or,
     ```
 
     ```powershell
-    Rename-Item -Path $PROFILE -NewName $($(Get-Item -Path $PROFILE) + '.bak')
+    Rename-Item -Path "$HOME\$file" -NewName "$HOME\$file.bak"
+    Rename-Item -Path "$HOME\$folder" -NewName "$HOME\$folder.bak"
     ```
 
 * run desired script(s)
@@ -81,5 +82,5 @@ Or,
     ```
 
     ```powershell
-    New-Item -ItemType SymbolicLink -Path $PROFILE -Target "$HOME\dotfiles\profile.ps1"
+    New-Item -ItemType SymbolicLink -Path $PROFILE.CurrentUserAllHosts -Target "$HOME\dotfiles\profile.ps1"
     ```
