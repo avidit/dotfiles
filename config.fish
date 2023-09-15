@@ -9,16 +9,19 @@ if test -L /usr/libexec/java_home
     set -x PATH $JAVA_HOME/bin $PATH
 end
 
+if test -L /usr/local/opt/groovy/libexec
+    set -x GROOVY_HOME (/usr/local/opt/groovy/libexec)
+    set -x PATH $GROOVY_HOME/bin $PATH
+end
+
 if type -q /usr/local/bin/npm
-    set -x NODE_PATH (npm -g root)
+    set -x NODE_PATH (npm root --location=global)
     set -x PATH $NODE_PATH $PATH
 end
 
 if test -d /usr/local/opt/go
-    set -x GOROOT /usr/local/opt/go/libexec/bin
-    set -x PATH $GOROOT $PATH
-    set -x GOPATH $HOME/go
-    set -x GOBIN (go env GOPATH)
+    set -x GOPATH $(go env GOPATH)
+    set -x GOBIN $(go env GOPATH)/bin
     set -x PATH $GOBIN $PATH
 end
 

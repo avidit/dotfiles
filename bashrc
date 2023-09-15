@@ -11,9 +11,16 @@ then
     export PATH=$PATH:$JAVA_HOME/bin
 fi
 
+if test -L /usr/local/opt/groovy/libexec
+then
+    GROOVY_HOME=$(/usr/local/opt/groovy/libexec)
+    export GROOVY_HOME
+    export PATH=$PATH:$GROOVY_HOME/bin
+fi
+
 if command -v /usr/local/bin/npm >/dev/null
 then
-    NODE_PATH=$(npm -g root)
+    NODE_PATH=$(npm root --location=global)
     export NODE_PATH
     export PATH=$PATH:$NODE_PATH
 fi
@@ -21,9 +28,8 @@ fi
 if test -d /usr/local/opt/go
 then
     export GOROOT=/usr/local/opt/go/libexec/bin
-    export PATH=$PATH:$GOROOT
-    export GOPATH=$HOME/go
-    export PATH=$PATH:$GOPATH
+    GOPATH=$(go env GOPATH)
+    export $GOPATH
     GOBIN=$(go env GOPATH)/bin
     export GOBIN
     export PATH=$PATH:$GOBIN
