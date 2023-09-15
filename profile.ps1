@@ -1,9 +1,9 @@
 # import modules
+
+# https://github.com/dahlbyk/posh-git
 Import-Module posh-git
 $GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $true
-$GitPromptSettings.EnableFileStatus = $false
-
-Import-Module ZLocation
+$GitPromptSettings.DefaultPromptBeforeSuffix.Text = ' $((Get-GitStatus).Upstream)`n'
 
 # https://github.com/dracula/powershell/blob/master/theme/dracula-prompt-configuration.ps1
 # Dracula readline configuration. Requires version 2.0, if you have 1.2 convert to `Set-PSReadlineOption -TokenType`
@@ -28,6 +28,9 @@ $GitPromptSettings.DefaultPromptSuffix.ForegroundColor = [ConsoleColor]::Magenta
 $GitPromptSettings.BeforeStatus.ForegroundColor = [ConsoleColor]::Blue
 $GitPromptSettings.BranchColor.ForegroundColor = [ConsoleColor]::Blue
 $GitPromptSettings.AfterStatus.ForegroundColor = [ConsoleColor]::Blue
+
+# https://github.com/vors/ZLocation
+Import-Module ZLocation
 
 # source functions
 . $HOME\dotfiles\functions.ps1

@@ -1,5 +1,5 @@
 [user]
-	name = avidit
+	name = Aabishkar KC
 	email = aabishkar@gmail.com
 	signingkey = 841E7FC3D932A8A7
 [credential]
@@ -10,17 +10,13 @@
 	excludesfile = ~/.gitignore_global
 [mergetool]
 	keepBackup = true
-[filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
-	required = true
 [help]
 	autocorrect = 1
 [log]
-    abbrevCommit = true
-    decorate = true
+	abbrevCommit = true
+	decorate = true
 [format]
-    pretty = %C(yellow)%h%C(white)%d%Creset %s %C(cyan)(%cr) %C(bold blue)<%an>%Creset
+	pretty = %C(yellow)%h%C(white)%d%Creset %s %C(cyan)(%cr) %C(bold blue)<%an>%Creset
 [color]
 	ui = auto
 [alias]
@@ -31,5 +27,8 @@
 	un = reset --hard HEAD
 	am = commit --amend -a
 	gr = log --graph
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -n 10
 [push]
 	default = current
+[safe]
+	directory = *

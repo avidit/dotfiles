@@ -39,10 +39,6 @@ npm-debug.log
 tmp/
 temp/
 
-# IDE
-.idea
-.vscode
-
 # dotenv
 .env
 .envrc
