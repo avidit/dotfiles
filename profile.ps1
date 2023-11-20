@@ -35,10 +35,14 @@ $GitPromptSettings.AfterStatus.ForegroundColor = [ConsoleColor]::Blue
 # npmrc profile
 # https://github.com/deoxxa/npmrc
 function prompt {
-    $npmrc = Split-Path $(Get-Item $(npm get userconfig)).Target -leaf
-    $prompt = Write-Prompt "[ $npmrc] " -ForegroundColor ([ConsoleColor]::Red)
-    $prompt += & $GitPromptScriptBlock
-    if ($prompt) { "$prompt " } else { " " }
+    if (Get-Command npmrc -errorAction SilentlyContinue) {
+        $npmrc = Split-Path $(Get-Item $(npm get userconfig)).Target -Leaf
+        $prompt = Write-Prompt "[ $npmrc] " -ForegroundColor ([ConsoleColor]::Red)
+        $prompt += & $GitPromptScriptBlock
+        if ($prompt) { "$prompt " } else { " " }
+    } else {
+        & $GitPromptScriptBlock
+    }
 }
 
 # https://github.com/vors/ZLocation
@@ -49,7 +53,7 @@ Import-Module ZLocation
 
 # source custom scripts
 $PSScripts = "$HOME\PSScripts"
-if(Test-Path -Path $PSScripts) {
+if (Test-Path -Path $PSScripts) {
     Get-ChildItem -Path $PSScripts -Filter *.ps1 | ForEach-Object {
         . $_.FullName
     }

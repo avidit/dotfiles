@@ -1,16 +1,12 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2023-09-15T15:04:18.316-00:00",
 	"Sources" : 
 	[
 		{
 			"Packages" : 
 			[
 				{
-					"PackageIdentifier" : "Canonical.Ubuntu.2204"
-				},
-				{
-					"PackageIdentifier" : "Docker.DockerDesktop"
+					"PackageIdentifier" : "7zip.7zip"
 				},
 				{
 					"PackageIdentifier" : "Fork.Fork"
@@ -19,139 +15,43 @@
 					"PackageIdentifier" : "Git.Git"
 				},
 				{
-					"PackageIdentifier" : "GnuWin32.Make"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.Edge"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.EdgeWebView2Runtime"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VisualStudio.Locator"
+					"PackageIdentifier" : "Microsoft.NuGet"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.WindowsTerminal"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.Office"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.OneDrive"
-				},
-				{
-					"PackageIdentifier" : "Postman.Postman"
 				},
 				{
 					"PackageIdentifier" : "Rainmeter.Rainmeter"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VisualStudio.2022.Community"
+					"PackageIdentifier" : "GitHub.cli"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2013.x64"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.5"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.6"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2010.x64"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.OpenJDK.16"
-				},
-				{
-					"PackageIdentifier" : "7zip.7zip"
-				},
-				{
-					"PackageIdentifier" : "RealVNC.VNCViewer"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2012.x86"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.PowerShell"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.3_1"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.DotNet.SDK.5"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.CLRTypesSQLServer.2019"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.DotNet.AspNetCore.3_1"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.WindowsPCHealthCheck"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VisualStudioCode"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.DotNet.Runtime.3_1"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.DotNet.Framework.DeveloperPack_4"
-				},
-				{
-					"PackageIdentifier" : "NickeManarin.ScreenToGif"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
+					"PackageIdentifier" : "Python.Launcher"
 				},
 				{
 					"PackageIdentifier" : "OpenJS.NodeJS"
 				},
 				{
-					"PackageIdentifier" : "GitHub.cli"
+					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2010.x86"
+					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
-					"PackageIdentifier" : "Python.Python.3.10"
+					"PackageIdentifier" : "NickeManarin.ScreenToGif"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.DotNet.AspNetCore.3_1"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.DotNet.SDK.6"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.DotNet.SDK.3_1"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2012.x64"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.DotNet.AspNetCore.6"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.DotNet.AspNetCore.5"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.DotNet.Runtime.3_1"
-				},
-				{
-					"PackageIdentifier" : "Python.Python.3.10"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2013.x86"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.DotNet.SDK.3_1"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.DotNet.SDK.3_1"
+					"PackageIdentifier" : "Python.Python.3.12"
 				}
 			],
 			"SourceDetails" : 
@@ -163,5 +63,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.6.2561"
+	"WinGetVersion" : "1.6.3133"
 }

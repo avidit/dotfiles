@@ -1,10 +1,11 @@
 #Requires -RunAsAdministrator
 $ErrorActionPreference = "Stop"
 Set-ExecutionPolicy RemoteSigned
+
 $DOTFILES = "$HOME\dotfiles"
 
 # configure windows
-& "$DOTFILES\windows.ps1"
+# & "$DOTFILES\windows.ps1"
 
 function Install-Winget() {
     $file = "Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.appxbundle"
@@ -33,12 +34,13 @@ Set-PSRepository PSGallery -InstallationPolicy Trusted
 Install-Module -Name PSScriptAnalyzer -Scope CurrentUser
 Install-Module -Name posh-git -Scope CurrentUser
 Install-Module -Name ZLocation -Scope CurrentUser
+Install-Module -Name Terminal-Icons -Scope CurrentUser
 
 # dotfiles
 $files = @("gitconfig", "gitignore_global")
 $files | ForEach-Object {
     if (Test-Path -Path $HOME/.$_) {
-        Write-host "backing up existing file $file"
+        Write-Host "backing up existing file $file"
         Rename-Item -Path "$HOME\.$_" -NewName "$HOME\.$_.bak" -Force
     }
     New-Item -ItemType SymbolicLink -Path "$HOME\.$_" -Target "$DOTFILES\$_"
@@ -46,7 +48,7 @@ $files | ForEach-Object {
 
 # profile
 if (Test-Path -Path $PROFILE.CurrentUserAllHosts) {
-    Write-host "backing up existing file $PROFILE.CurrentUserAllHosts"
+    Write-Host "backing up existing file $PROFILE.CurrentUserAllHosts"
     Rename-Item -Path $PROFILE.CurrentUserAllHosts -NewName "$($PROFILE.CurrentUserAllHosts).bak"
 }
 New-Item -ItemType SymbolicLink -Path $PROFILE.CurrentUserAllHosts -Target "$DOTFILES\profile.ps1"
