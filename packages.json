@@ -9,49 +9,58 @@
 					"PackageIdentifier" : "7zip.7zip"
 				},
 				{
-					"PackageIdentifier" : "Fork.Fork"
-				},
-				{
 					"PackageIdentifier" : "Git.Git"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.Edge"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.EdgeWebView2Runtime"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.NuGet"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.WindowsTerminal"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.OneDrive"
-				},
-				{
-					"PackageIdentifier" : "Rainmeter.Rainmeter"
 				},
 				{
 					"PackageIdentifier" : "GitHub.cli"
 				},
 				{
-					"PackageIdentifier" : "Python.Launcher"
-				},
-				{
-					"PackageIdentifier" : "OpenJS.NodeJS"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VisualStudioCode"
+					"PackageIdentifier" : "NickeManarin.ScreenToGif"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
-					"PackageIdentifier" : "NickeManarin.ScreenToGif"
+					"PackageIdentifier" : "OpenJS.NodeJS"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VisualStudio.2022.Community"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.Edge"
+				},
+				{
+					"PackageIdentifier" : "Rainmeter.Rainmeter"
+				},
+				{
+					"PackageIdentifier" : "Fork.Fork"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.NuGet"
+				},
+				{
+					"PackageIdentifier" : "Postman.Postman"
+				},
+				{
+					"PackageIdentifier" : "code52.Carnac"
+				},
+				{
+					"PackageIdentifier" : "ezwinports.make"
+				},
+				{
+					"PackageIdentifier" : "jqlang.jq"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
 					"PackageIdentifier" : "Python.Python.3.12"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.Teams"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsTerminal"
 				}
 			],
 			"SourceDetails" : 
@@ -63,5 +72,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.6.3133"
+	"WinGetVersion" : "1.10.340"
 }

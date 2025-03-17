@@ -5,7 +5,7 @@
 [credential]
 	helper = osxkeychain
 [core]
-	autocrlf = input
+	autocrlf = false
 	editor = vim
 	excludesfile = ~/.gitignore_global
 [mergetool]
@@ -28,7 +28,13 @@
 	am = commit --amend -a
 	gr = log --graph
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -n 10
+[fetch]
+	prune = true
 [push]
 	default = current
 [safe]
 	directory = *
+[credential "https://git.autodesk.com"]
+	provider = github
+[credential "https://gitcontractors.autodesk.com"]
+	provider = github
