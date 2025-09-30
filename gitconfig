@@ -1,11 +1,10 @@
 [user]
 	name = Aabishkar KC
 	email = aabishkar@gmail.com
-	signingkey = 841E7FC3D932A8A7
 [credential]
 	helper = osxkeychain
 [core]
-	autocrlf = false
+	autocrlf = true
 	editor = vim
 	excludesfile = ~/.gitignore_global
 [mergetool]
@@ -28,13 +27,7 @@
 	am = commit --amend -a
 	gr = log --graph
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -n 10
-[fetch]
-	prune = true
 [push]
 	default = current
 [safe]
 	directory = *
-[credential "https://git.autodesk.com"]
-	provider = github
-[credential "https://gitcontractors.autodesk.com"]
-	provider = github

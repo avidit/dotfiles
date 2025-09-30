@@ -1,8 +1,11 @@
 #!/usr/bin/env sh
 
 # Install Homebrew
-if [ "$(command -v brew)" = "" ]; then 
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+if [ "$(command -v brew)" = "" ]; then
+    echo "installing homebrew"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> "$HOME/.zprofile"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # Fetch the newest version of Homebrew and all formulae from GitHub
