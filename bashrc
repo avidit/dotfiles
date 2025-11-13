@@ -60,5 +60,8 @@ test -f $HOME/.iterm2_shell_integration.bash && source $HOME/.iterm2_shell_integ
 # starship
 eval "$(starship init bash)"
 
+# zoxide
+eval "$(zoxide init bash)"
+
 # aliases
 alias c='clear'

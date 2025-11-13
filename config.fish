@@ -48,5 +48,8 @@ test -e $HOME/.iterm2_shell_integration.fish ; and source $HOME/.iterm2_shell_in
 # starship
 starship init fish | source
 
+# zoxide
+zoxide init fish | source
+
 # aliases
 alias c='clear'

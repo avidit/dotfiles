@@ -29,8 +29,8 @@ $GitPromptSettings.BeforeStatus.ForegroundColor = [ConsoleColor]::Blue
 $GitPromptSettings.BranchColor.ForegroundColor = [ConsoleColor]::Blue
 $GitPromptSettings.AfterStatus.ForegroundColor = [ConsoleColor]::Blue
 
-# https://github.com/vors/ZLocation
-Import-Module ZLocation
+# zoxide
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
 # source functions
 . $HOME\dotfiles\functions.ps1
