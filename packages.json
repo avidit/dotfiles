@@ -12,19 +12,40 @@
 					"PackageIdentifier" : "Git.Git"
 				},
 				{
-					"PackageIdentifier" : "GitHub.cli"
+					"PackageIdentifier" : "Microsoft.Office"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.OneDrive"
 				},
 				{
 					"PackageIdentifier" : "NickeManarin.ScreenToGif"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2010.x64"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.AzureCLI"
+				},
+				{
+					"PackageIdentifier" : "GitHub.cli"
+				},
+				{
+					"PackageIdentifier" : "Starship.Starship"
+				},
+				{
+					"PackageIdentifier" : "GoLang.Go"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
-					"PackageIdentifier" : "OpenJS.NodeJS"
+					"PackageIdentifier" : "OpenJS.NodeJS.23"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VisualStudio.2022.Community"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VisualStudio.Community.Insiders"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.Edge"
@@ -33,16 +54,31 @@
 					"PackageIdentifier" : "Rainmeter.Rainmeter"
 				},
 				{
+					"PackageIdentifier" : "Python.Launcher"
+				},
+				{
 					"PackageIdentifier" : "Fork.Fork"
+				},
+				{
+					"PackageIdentifier" : "GnuWin32.Which"
+				},
+				{
+					"PackageIdentifier" : "Hashicorp.Packer"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.NuGet"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.Sysinternals.RDCMan"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VisualStudio.Locator"
+				},
+				{
 					"PackageIdentifier" : "Postman.Postman"
 				},
 				{
-					"PackageIdentifier" : "code52.Carnac"
+					"PackageIdentifier" : "ajeetdsouza.zoxide"
 				},
 				{
 					"PackageIdentifier" : "ezwinports.make"
@@ -51,10 +87,16 @@
 					"PackageIdentifier" : "jqlang.jq"
 				},
 				{
+					"PackageIdentifier" : "Python.Python.3.13"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.PowerToys"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
-					"PackageIdentifier" : "Python.Python.3.12"
+					"PackageIdentifier" : "Anysphere.Cursor"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.Teams"
