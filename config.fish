@@ -11,13 +11,13 @@ set -x BREW_PREFIX (brew --prefix)
 set -x PATH $BREW_PREFIX/bin $PATH
 set -x PATH $BREW_PREFIX/sbin $PATH
 
-if test -L /Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home
-    set -x JAVA_HOME "/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home"
+if test -f /usr/libexec/java_home
+    set -x JAVA_HOME (/usr/libexec/java_home)
     set -x PATH $JAVA_HOME/bin $PATH
 end
 
-if test -L $BREW_PREFIX/opt/groovy/libexec
-    set -x GROOVY_HOME ($BREW_PREFIX/opt/groovy/libexec)
+if test -d $BREW_PREFIX/opt/groovy/libexec
+    set -x GROOVY_HOME $BREW_PREFIX/opt/groovy/libexec
     set -x PATH $GROOVY_HOME/bin $PATH
 end
 

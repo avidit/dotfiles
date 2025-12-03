@@ -4,22 +4,23 @@
 export EDITOR=vim
 
 # set brew prefix
+export PATH=/opt/homebrew/bin:$PATH
 BREW_PREFIX=$(brew --prefix)
 
 # set PATH
 export PATH=$BREW_PREFIX/bin:$PATH
 export PATH=$BREW_PREFIX/sbin:$PATH
 
-if test -L /Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home
+if test -f /usr/libexec/java_home
 then
-    JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home"
+    JAVA_HOME=$(/usr/libexec/java_home)
     export JAVA_HOME
     export PATH=$PATH:$JAVA_HOME/bin
 fi
 
-if test -L $BREW_PREFIX/opt/groovy/libexec
+if test -d $BREW_PREFIX/opt/groovy/libexec
 then
-    GROOVY_HOME=$($BREW_PREFIX/opt/groovy/libexec)
+    GROOVY_HOME=$BREW_PREFIX/opt/groovy/libexec
     export GROOVY_HOME
     export PATH=$PATH:$GROOVY_HOME/bin
 fi
