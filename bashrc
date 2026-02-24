@@ -39,7 +39,7 @@ then
     export PATH=$PATH:$GOBIN
 fi
 
-export DOTNET_ROOT="$BREW_PREFIXopt/dotnet/libexec"
+export DOTNET_ROOT="$BREW_PREFIX/opt/dotnet/libexec"
 
 test -d "$HOME/bin" && export PATH=$PATH:$HOME/bin
 
