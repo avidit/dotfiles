@@ -26,7 +26,7 @@ if type -q $BREW_PREFIX/bin/npm
     set -x PATH $NODE_PATH $PATH
 end
 
-if test -d $BREW_PREFIX/bin/go
+if test -f $BREW_PREFIX/bin/go
     set -x GOPATH $(go env GOPATH)
     set -x GOBIN $(go env GOPATH)/bin
     set -x PATH $GOBIN $PATH
