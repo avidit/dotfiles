@@ -27,7 +27,6 @@
 ._*
 .Spotlight-V100
 .Trashes
-ehthumbs.db
 Thumbs.db
 Icon
 
@@ -46,3 +45,6 @@ temp/
 # python
 .venv
 *._*.py
+
+# IDE
+.claude/settings.local.json

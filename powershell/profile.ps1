@@ -33,7 +33,7 @@ $GitPromptSettings.AfterStatus.ForegroundColor = [ConsoleColor]::Blue
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
 # source functions
-. $HOME\dotfiles\functions.ps1
+. $HOME\dotfiles\powershell\functions.ps1
 
 # source custom scripts
 $PSScripts = "$HOME\PSScripts"

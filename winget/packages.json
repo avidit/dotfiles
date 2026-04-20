@@ -81,7 +81,7 @@
 					"PackageIdentifier" : "ajeetdsouza.zoxide"
 				},
 				{
-					"PackageIdentifier" : "ezwinports.make"
+					"PackageIdentifier" : "GnuWin32.Make"
 				},
 				{
 					"PackageIdentifier" : "jqlang.jq"

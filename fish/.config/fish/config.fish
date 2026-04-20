@@ -45,6 +45,9 @@ test -e $BREW_PREFIX/bin/direnv ; and direnv hook fish | source
 # iterm2 shell integration
 test -e $HOME/.iterm2_shell_integration.fish ; and source $HOME/.iterm2_shell_integration.fish
 
+# nvm
+set -x nvm_data $HOME/.nvm
+
 # starship
 starship init fish | source
 

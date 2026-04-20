@@ -1,86 +1,82 @@
 # Dotfiles
 
-My .dotfiles
+My dotfiles, managed with [GNU Stow](http://www.gnu.org/software/stow/) on macOS/Linux and symlinks on Windows.
 
-I keep this repository in `$HOME/dotfiles`
-and symlink the necessary config files from the repository into `$HOME`
+I keep this repository in `$HOME/dotfiles`.
 
-e.g.
+## macOS / Linux
+
+### Packages
+
+Managed with stow — each subdirectory mirrors the desired layout under `$HOME`.
+
+| Package | Config |
+| --- | --- |
+| `bash/` | [bash](http://www.gnu.org/software/bash/) — `.bashrc` |
+| `brewfile/` | [Homebrew bundle](https://docs.brew.sh/Manpage#bundle-subcommand) — `Brewfile` |
+| `fish/` | [fish](https://fishshell.com/) — `config.fish`, `fish_plugins` |
+| `git/` | [git](https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration) — `.gitconfig`, `.gitignore_global` |
+| `starship/` | [starship](https://starship.rs/) — `starship.toml` |
+| `tmux/` | [tmux](https://tmux.github.io) — `.tmux.conf` |
+| `vim/` | [vim](https://vim.sourceforge.io/) — `.vimrc` |
+
+### macOS Setup
 
 ```sh
-ln -s $HOME/dotfiles/bashrc .bashrc
+cd $HOME
+git clone "https://github.com/avidit/dotfiles.git"
+cd dotfiles
+make all
 ```
 
-## Index
+`make all` installs Homebrew packages, sets fish as the default shell, and creates all symlinks via stow.
 
-* `bashrc` [bash](http://www.gnu.org/software/bash/) configuration file
-* `brew.sh` [homebrew](https://brew.sh/) homebrew setup script
-* `Brewfile` [homebrew](https://docs.brew.sh/Manpage#bundle-subcommand) bundle file
-* `config.fish` [fish](https://fishshell.com/) configuration file
-* `functions.ps1` [PowerShell](https://docs.microsoft.com/en-us/powershell/) functions
-* `gitconfig` [git](https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration) configuration file
-* `gitignore_global` global [gitignore](https://git-scm.com/docs/gitignore) file
-* `macos` Script for setting up a new mac by [Mathias Bynens](https://mths.be/macos)
-* `profile.ps1` PowerShell profile [about_Profiles](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles)
-* `setup.ps1` setup for windows
-* `setup.sh` setup for mac
-* `tmux.conf` [tmux](https://tmux.github.io) configuration file
-* `vim.sh` vim plugins setup script
-* `vimrc` [vim](https://vim.sourceforge.io/) vim configuration file
-* `windows.ps1` Script for setting up a new windows by [jayharris](https://github.com/jayharris/dotfiles-windows)
+Individual targets: `make install-homebrew-packages`, `make set-fish-as-default-shell`, `make install-dotfiles`, `make install-fisher`, `make install-fish-plugins`.
+
+To stow or remove individual packages manually:
+
+```sh
+stow --target=$HOME --dir=$HOME/dotfiles bash git tmux fish starship vim brewfile
+stow --target=$HOME --dir=$HOME/dotfiles -D bash
+```
+
+## Windows
+
+### Configs
+
+Symlinked via `make install-dotfiles`.
+
+| File | Config |
+| --- | --- |
+| `git/.gitconfig` | Git config |
+| `git/.gitignore_global` | Global gitignore |
+| `starship/.config/starship.toml` | [starship](https://starship.rs/) prompt |
+| `powershell/profile.ps1` | PowerShell profile |
+| `powershell/functions.ps1` | PowerShell helper functions |
+| `winget/packages.json` | Package list for winget |
+
+### Windows Setup
+
+Install [GNU Make](https://gnuwin32.sourceforge.net/packages/make.htm) first (one-time):
+
+```powershell
+winget install GnuWin32.Make
+```
+
+Then run:
+
+```powershell
+cd $HOME
+git clone "https://github.com/avidit/dotfiles.git"
+cd dotfiles
+make all
+```
+
+`make all` installs packages via winget, PowerShell modules, creates symlinks, and links the PowerShell profile.
+
+Individual targets: `make install-winget-packages`, `make install-powershell-modules`, `make install-dotfiles`, `make install-powershell-profile`.
 
 ---
 
-* `setup` setup script
-
-## Setup
-
-* Clone repo
-
-    ```sh
-    cd $HOME
-    git clone "https://github.com/avidit/dotfiles.git"
-    ```
-
-* Run the setup script
-
-    ```sh
-    cd $HOME/dotfiles
-    ./setup.sh
-    ```
-
-    ```powershell
-    cd $HOME\dotfiles
-    .\setup.ps1
-    ```
-
-Or,
-
-* backup existing files and folders
-
-    ```sh
-    mv "$HOME/$file" "$HOME/$file.bak"
-    mv "$HOME/$folder" "$HOME/$folder.bak"
-    ```
-
-    ```powershell
-    Rename-Item -Path "$HOME\$file" -NewName "$HOME\$file.bak"
-    Rename-Item -Path "$HOME\$folder" -NewName "$HOME\$folder.bak"
-    ```
-
-* run desired script(s)
-
-    ```sh
-    sh "$HOME/dotfiles/brew.sh"
-    ```
-
-* create symlinks for required file(s) and folder(s)
-
-    ```sh
-    ln -s "$HOME/dotfiles/bashrc" "$HOME/.bashrc"
-    ln -s "$HOME/dotfiles/config.fish" "$HOME/.config/fish/config.fish"
-    ```
-
-    ```powershell
-    New-Item -ItemType SymbolicLink -Path $PROFILE.CurrentUserAllHosts -Target "$HOME\dotfiles\profile.ps1"
-    ```
+For macOS system defaults, see [mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles/blob/main/.macos).
+For Windows system defaults, see [jayharris/dotfiles-windows](https://github.com/jayharris/dotfiles-windows/blob/master/windows.ps1).
