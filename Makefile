@@ -1,8 +1,8 @@
-DOTFILES := $(HOME)/dotfiles
-
 ifeq ($(OS),Windows_NT)
   HOME := $(USERPROFILE)
 endif
+
+DOTFILES := $(HOME)/dotfiles
 
 STOW_FOLDERS := bash git tmux fish starship vim brewfile
 
@@ -14,9 +14,14 @@ STOW_FOLDERS := bash git tmux fish starship vim brewfile
         install-winget-packages \
         install-powershell-modules install-powershell-profile
 
+ifeq ($(OS),Windows_NT)
+help: ## Show this help
+	@pwsh -Command "Select-String -Path '$(firstword $(MAKEFILE_LIST))' -Pattern '^[a-zA-Z_-]+:.*##' | ForEach-Object { if ($$_.Line -match '^([a-zA-Z_-]+):.*##(.*)$$') { '  {0,-30} {1}' -f $$Matches[1], $$Matches[2].Trim() } }"
+else
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*##' $(MAKEFILE_LIST) | \
 	    awk 'BEGIN {FS = ":.*##"}; {printf "  %-30s %s\n", $$1, $$2}'
+endif
 
 # ── Full setup ────────────────────────────────────────────────────────────────
 
@@ -29,17 +34,18 @@ endif
 # ── Dotfiles ──────────────────────────────────────────────────────────────────
 
 ifeq ($(OS),Windows_NT)
-install-dotfiles: ## Create symlinks with pwsh
-	pwsh -Command " \
-	  New-Item -Force -ItemType Directory -Path $(HOME)/.config | Out-Null; \
+install-dotfiles: ## Create symlinks with pwsh (auto-elevates if needed)
+	@pwsh -NoProfile -Command ". '$(DOTFILES)/powershell/functions.ps1'; Invoke-Elevated { \
+	  New-Item -Force -ItemType Directory -Path '$(HOME)/.config' | Out-Null; \
 	  $$links = @{ \
-	    '$(HOME)/.gitconfig' = '$(DOTFILES)/git/.gitconfig'; \
-	    '$(HOME)/.gitignore_global' = '$(DOTFILES)/git/.gitignore_global'; \
+	    '$(HOME)/.gitconfig'            = '$(DOTFILES)/git/.gitconfig'; \
+	    '$(HOME)/.gitignore_global'     = '$(DOTFILES)/git/.gitignore_global'; \
 	    '$(HOME)/.config/starship.toml' = '$(DOTFILES)/starship/.config/starship.toml' \
 	  }; \
 	  $$links.GetEnumerator() | ForEach-Object { \
 	    New-Item -ItemType SymbolicLink -Path $$_.Key -Target $$_.Value -Force \
-	  }"
+	  } \
+	}"
 else
 install-dotfiles: ## Create symlinks with stow
 	mkdir -p "$(HOME)/.config/fish"
@@ -83,14 +89,16 @@ install-winget-packages: ## Install packages via winget
 	winget import --import-file "$(DOTFILES)/winget/packages.json"
 
 install-powershell-modules: ## Install PowerShell modules (posh-git, PowerShellGet)
-	pwsh -Command " \
+	@pwsh -NoProfile -Command ". '$(DOTFILES)/powershell/functions.ps1'; Invoke-Elevated { \
 	  Install-PackageProvider NuGet -Force; \
 	  Install-Module -Name PowerShellGet -Force; \
 	  Set-PSRepository PSGallery -InstallationPolicy Trusted; \
-	  Install-Module -Name posh-git -Scope CurrentUser"
+	  Install-Module -Name posh-git -Scope CurrentUser \
+	}"
 
-install-powershell-profile: ## Symlink PowerShell profile
-	pwsh -Command " \
+install-powershell-profile: ## Symlink PowerShell profile (auto-elevates if needed)
+	@pwsh -NoProfile -Command ". '$(DOTFILES)/powershell/functions.ps1'; Invoke-Elevated { \
 	  New-Item -ItemType SymbolicLink \
 	    -Path $$PROFILE.CurrentUserAllHosts \
-	    -Target '$(DOTFILES)/powershell/profile.ps1' -Force"
+	    -Target '$(DOTFILES)/powershell/profile.ps1' -Force \
+	}"

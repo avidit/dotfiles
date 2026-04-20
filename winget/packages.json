@@ -1,5 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
+	"CreationDate" : "2026-04-20T17:16:37.510-00:00",
 	"Sources" : 
 	[
 		{
@@ -7,6 +8,9 @@
 			[
 				{
 					"PackageIdentifier" : "7zip.7zip"
+				},
+				{
+					"PackageIdentifier" : "Docker.DockerDesktop"
 				},
 				{
 					"PackageIdentifier" : "Git.Git"
@@ -18,7 +22,13 @@
 					"PackageIdentifier" : "Microsoft.OneDrive"
 				},
 				{
+					"PackageIdentifier" : "Google.Chrome"
+				},
+				{
 					"PackageIdentifier" : "NickeManarin.ScreenToGif"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2010.x64"
@@ -27,19 +37,28 @@
 					"PackageIdentifier" : "Microsoft.AzureCLI"
 				},
 				{
-					"PackageIdentifier" : "GitHub.cli"
-				},
-				{
-					"PackageIdentifier" : "Starship.Starship"
+					"PackageIdentifier" : "Azul.Zulu.23.JDK"
 				},
 				{
 					"PackageIdentifier" : "GoLang.Go"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerShell"
+					"PackageIdentifier" : "Microsoft.CLRTypesSQLServer.2019"
 				},
 				{
-					"PackageIdentifier" : "OpenJS.NodeJS.23"
+					"PackageIdentifier" : "GitHub.cli"
+				},
+				{
+					"PackageIdentifier" : "Autodesk.AutodeskAccess"
+				},
+				{
+					"PackageIdentifier" : "Starship.Starship"
+				},
+				{
+					"PackageIdentifier" : "Zoom.Zoom"
+				},
+				{
+					"PackageIdentifier" : "OpenJS.NodeJS"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VisualStudio.2022.Community"
@@ -48,16 +67,70 @@
 					"PackageIdentifier" : "Microsoft.VisualStudio.Community.Insiders"
 				},
 				{
+					"PackageIdentifier" : "GnuWin32.Make"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.Edge"
+				},
+				{
+					"PackageIdentifier" : "Insecure.Nmap"
 				},
 				{
 					"PackageIdentifier" : "Rainmeter.Rainmeter"
 				},
 				{
+					"PackageIdentifier" : "WiresharkFoundation.Wireshark"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.6"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.AspNetCore.8"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.Framework.DeveloperPack.4.6"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.8.x86"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.8.x64"
+				},
+				{
 					"PackageIdentifier" : "Python.Launcher"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
+				},
+				{
+					"PackageIdentifier" : "Apache.Groovy.4"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.SDK.8"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsSDK.10.0.18362"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsSDK.10.0.26100"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
+				},
+				{
+					"PackageIdentifier" : "Bruno.Bruno"
+				},
+				{
+					"PackageIdentifier" : "Anthropic.ClaudeCode"
+				},
+				{
+					"PackageIdentifier" : "Fastfetch-cli.Fastfetch"
+				},
+				{
 					"PackageIdentifier" : "Fork.Fork"
+				},
+				{
+					"PackageIdentifier" : "GitHub.Copilot"
 				},
 				{
 					"PackageIdentifier" : "GnuWin32.Which"
@@ -81,28 +154,67 @@
 					"PackageIdentifier" : "ajeetdsouza.zoxide"
 				},
 				{
-					"PackageIdentifier" : "GnuWin32.Make"
+					"PackageIdentifier" : "jqlang.jq"
 				},
 				{
-					"PackageIdentifier" : "jqlang.jq"
+					"PackageIdentifier" : "pnpm.pnpm"
+				},
+				{
+					"PackageIdentifier" : "SlackTechnologies.Slack"
 				},
 				{
 					"PackageIdentifier" : "Python.Python.3.13"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerToys"
+					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VisualStudioCode"
+					"PackageIdentifier" : "Microsoft.PowerToys"
 				},
 				{
 					"PackageIdentifier" : "Anysphere.Cursor"
 				},
 				{
+					"PackageIdentifier" : "FilesCommunity.FilesPreview"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.Teams"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.AppInstaller"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.UI.Xaml.2.7"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.UI.Xaml.2.8"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCLibs.Desktop.14"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCLibs.14"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.4"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.5"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.6"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.7"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.8"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.WindowsTerminal"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WSL"
 				}
 			],
 			"SourceDetails" : 
@@ -114,5 +226,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.10.340"
+	"WinGetVersion" : "1.28.220"
 }

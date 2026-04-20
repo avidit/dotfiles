@@ -44,15 +44,30 @@ stow --target=$HOME --dir=$HOME/dotfiles -D bash
 
 ### Configs
 
-Symlinked via `make install-dotfiles`.
+Symlinked via `make install-dotfiles`:
 
 | File | Config |
 | --- | --- |
 | `git/.gitconfig` | Git config |
 | `git/.gitignore_global` | Global gitignore |
 | `starship/.config/starship.toml` | [starship](https://starship.rs/) prompt |
+
+Symlinked via `make install-powershell-profile`:
+
+| File | Config |
+| --- | --- |
 | `powershell/profile.ps1` | PowerShell profile |
+
+Sourced directly by `profile.ps1` (no symlink needed):
+
+| File | Config |
+| --- | --- |
 | `powershell/functions.ps1` | PowerShell helper functions |
+
+Used by `make install-winget-packages`:
+
+| File | Config |
+| --- | --- |
 | `winget/packages.json` | Package list for winget |
 
 ### Windows Setup
