@@ -2,8 +2,6 @@
 
 My dotfiles, managed with [GNU Stow](http://www.gnu.org/software/stow/) on macOS/Linux and symlinks on Windows.
 
-I keep this repository in `$HOME/dotfiles`.
-
 ## macOS / Linux
 
 ### Packages
@@ -23,7 +21,6 @@ Managed with stow — each subdirectory mirrors the desired layout under `$HOME`
 ### macOS Setup
 
 ```sh
-cd $HOME
 git clone "https://github.com/avidit/dotfiles.git"
 cd dotfiles
 make all
@@ -33,41 +30,19 @@ make all
 
 Individual targets: `make install-homebrew-packages`, `make set-fish-as-default-shell`, `make install-dotfiles`, `make install-fisher`, `make install-fish-plugins`.
 
-To stow or remove individual packages manually:
-
-```sh
-stow --target=$HOME --dir=$HOME/dotfiles bash git tmux fish starship vim brewfile
-stow --target=$HOME --dir=$HOME/dotfiles -D bash
-```
+To remove all symlinks: `make uninstall-dotfiles`.
 
 ## Windows
 
 ### Configs
 
-Symlinked via `make install-dotfiles`:
-
-| File | Config |
+| File | Description |
 | --- | --- |
 | `git/.gitconfig` | Git config |
 | `git/.gitignore_global` | Global gitignore |
 | `starship/.config/starship.toml` | [starship](https://starship.rs/) prompt |
-
-Symlinked via `make install-powershell-profile`:
-
-| File | Config |
-| --- | --- |
 | `powershell/profile.ps1` | PowerShell profile |
-
-Sourced directly by `profile.ps1` (no symlink needed):
-
-| File | Config |
-| --- | --- |
 | `powershell/functions.ps1` | PowerShell helper functions |
-
-Used by `make install-winget-packages`:
-
-| File | Config |
-| --- | --- |
 | `winget/packages.json` | Package list for winget |
 
 ### Windows Setup
@@ -81,7 +56,6 @@ winget install GnuWin32.Make
 Then run:
 
 ```powershell
-cd $HOME
 git clone "https://github.com/avidit/dotfiles.git"
 cd dotfiles
 make all
@@ -90,6 +64,8 @@ make all
 `make all` installs packages via winget, PowerShell modules, creates symlinks, and links the PowerShell profile.
 
 Individual targets: `make install-winget-packages`, `make install-powershell-modules`, `make install-dotfiles`, `make install-powershell-profile`.
+
+To remove all symlinks: `make uninstall-dotfiles`.
 
 ---
 
