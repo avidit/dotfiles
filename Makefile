@@ -6,7 +6,7 @@ DOTFILES := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 
 STOW_FOLDERS := bash git tmux fish starship vim brewfile
 
-.DEFAULT_GOAL := install-dotfiles
+.DEFAULT_GOAL := help
 
 .PHONY: all install-dotfiles uninstall-dotfiles help \
         install-homebrew install-homebrew-packages \
@@ -15,12 +15,24 @@ STOW_FOLDERS := bash git tmux fish starship vim brewfile
         install-powershell-modules install-powershell-profile
 
 ifeq ($(OS),Windows_NT)
-help: ## Show this help (Windows)
-	@pwsh -Command "Select-String -Path '$(firstword $(MAKEFILE_LIST))' -Pattern '^[a-zA-Z_-]+:.*##' | ForEach-Object { if ($$_.Line -match '^([a-zA-Z_-]+):.*##(.*)$$') { '  {0,-30} {1}' -f $$Matches[1], $$Matches[2].Trim() } }"
+help: ## Show available targets
+	@pwsh -NoProfile -Command "Write-Host 'Dotfiles — Windows'; Write-Host ''; Write-Host 'Usage: make [target]'; Write-Host ''; Write-Host 'Targets:'; Write-Host '  help                         Show this help'; Write-Host '  all                          Full setup'; Write-Host '  install-dotfiles             Create config symlinks'; Write-Host '  uninstall-dotfiles           Remove config symlinks'; Write-Host '  install-winget-packages      Install packages via winget'; Write-Host '  install-powershell-modules   Install PowerShell modules'; Write-Host '  install-powershell-profile   Link PowerShell profile'"
 else
-help: ## Show this help
-	@grep -E '^[a-zA-Z_-]+:.*##' $(MAKEFILE_LIST) | \
-	    awk 'BEGIN {FS = ":.*##"}; {printf "  %-30s %s\n", $$1, $$2}'
+help: ## Show available targets
+	@echo "Dotfiles — macOS / Linux"
+	@echo ""
+	@echo "Usage: make [target]"
+	@echo ""
+	@echo "Targets:"
+	@echo "  help                         Show this help"
+	@echo "  all                          Full setup"
+	@echo "  install-dotfiles             Create symlinks with stow"
+	@echo "  uninstall-dotfiles           Remove symlinks"
+	@echo "  install-homebrew             Install Homebrew"
+	@echo "  install-homebrew-packages    Install Homebrew bundle packages"
+	@echo "  set-fish-as-default-shell    Set fish as the default shell"
+	@echo "  install-fisher               Install Fisher plugin manager"
+	@echo "  install-fish-plugins         Install fish plugins"
 endif
 
 # ── Full setup ───────────────────────────────────────────────────────────────
@@ -36,17 +48,12 @@ endif
 ifeq ($(OS),Windows_NT)
 install-dotfiles: ## Create symlinks with pwsh (Windows)
 	@echo "==> Creating symlinks..."
-	@pwsh -NoProfile -Command ". '$(DOTFILES)/powershell/functions.ps1'; Invoke-Elevated { \
+	@pwsh -NoProfile -Command ". '$(DOTFILES)/powershell/functions.ps1'; \
 	  New-Item -Force -ItemType Directory -Path '$(HOME)/.config' | Out-Null; \
-	  $$links = @{ \
-	    '$(HOME)/.gitconfig'            = '$(DOTFILES)/git/.gitconfig'; \
-	    '$(HOME)/.gitignore_global'     = '$(DOTFILES)/git/.gitignore_global'; \
-	    '$(HOME)/.config/starship.toml' = '$(DOTFILES)/starship/.config/starship.toml' \
-	  }; \
-	  $$links.GetEnumerator() | ForEach-Object { \
-	    New-Item -ItemType SymbolicLink -Path $$_.Key -Target $$_.Value -Force \
-	  } \
-	}"
+	  Install-DotfileLink -Path '$(HOME)/.gitconfig' -Target '$(DOTFILES)/git/.gitconfig'; \
+	  Install-DotfileLink -Path '$(HOME)/.gitignore_global' -Target '$(DOTFILES)/git/.gitignore_global'; \
+	  Install-DotfileLink -Path '$(HOME)/.config/starship.toml' -Target '$(DOTFILES)/starship/.config/starship.toml' \
+	"
 else
 install-dotfiles: ## Create symlinks with stow
 	@echo "==> Creating symlinks..."
@@ -113,19 +120,16 @@ install-winget-packages: ## Install packages via winget
 	@echo "==> Installing winget packages..."
 	winget import --import-file "$(DOTFILES)/winget/packages.json"
 
-install-powershell-modules: ## Install PowerShell modules (posh-git, PowerShellGet)
+install-powershell-modules: ## Install PowerShell modules (PowerShellGet)
 	@echo "==> Installing PowerShell modules..."
-	@pwsh -NoProfile -Command ". '$(DOTFILES)/powershell/functions.ps1'; Invoke-Elevated { \
+	@pwsh -NoProfile -Command " \
 	  Install-PackageProvider NuGet -Force; \
 	  Install-Module -Name PowerShellGet -Force; \
-	  Set-PSRepository PSGallery -InstallationPolicy Trusted; \
-	  Install-Module -Name posh-git -Scope CurrentUser \
-	}"
+	  Set-PSRepository PSGallery -InstallationPolicy Trusted \
+	"
 
-install-powershell-profile: ## Symlink PowerShell profile (auto-elevates if needed)
+install-powershell-profile: ## Symlink PowerShell profile
 	@echo "==> Linking PowerShell profile..."
-	@pwsh -NoProfile -Command ". '$(DOTFILES)/powershell/functions.ps1'; Invoke-Elevated { \
-	  New-Item -ItemType SymbolicLink \
-	    -Path $$PROFILE.CurrentUserAllHosts \
-	    -Target '$(DOTFILES)/powershell/profile.ps1' -Force \
-	}"
+	@pwsh -NoProfile -Command ". '$(DOTFILES)/powershell/functions.ps1'; \
+	  Install-DotfileLink -Path $$PROFILE.CurrentUserAllHosts -Target '$(DOTFILES)/powershell/profile.ps1' \
+	"
