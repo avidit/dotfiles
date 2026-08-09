@@ -4,7 +4,7 @@ endif
 
 DOTFILES := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 
-STOW_FOLDERS := bash git tmux fish starship vim brewfile
+STOW_FOLDERS := bash env git tmux fish starship vim brewfile zsh ghostty
 
 .DEFAULT_GOAL := help
 

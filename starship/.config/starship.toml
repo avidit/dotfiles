@@ -1,6 +1,8 @@
+palette = "catppuccin_frappe"
+scan_timeout = 30
+command_timeout = 500
+
 format = """
-$username\
-$hostname\
 $directory\
 $git_branch\
 $git_state\
@@ -10,21 +12,53 @@ $line_break\
 $python\
 $character"""
 
+[palettes.catppuccin_frappe]
+rosewater = "#f2d5cf"
+flamingo = "#eebebe"
+pink = "#f4b8e4"
+mauve = "#ca9ee6"
+red = "#e78284"
+maroon = "#ea999c"
+peach = "#ef9f76"
+yellow = "#e5c890"
+green = "#a6d189"
+teal = "#81c8be"
+sky = "#99d1db"
+sapphire = "#85c1dc"
+blue = "#8caaee"
+lavender = "#babbf1"
+text = "#c6d0f5"
+subtext1 = "#b5bfe2"
+subtext0 = "#a5adce"
+overlay2 = "#949cbb"
+overlay1 = "#838ba7"
+overlay0 = "#737994"
+surface2 = "#626880"
+surface1 = "#51576d"
+surface0 = "#414559"
+base = "#303446"
+mantle = "#292c3c"
+crust = "#232634"
+
 [directory]
-style = "blue"
+style = "fg:blue"
+truncation_length = 3
+truncate_to_repo = true
+fish_style_pwd_dir_length = 1
 
 [character]
-success_symbol = "[❯](purple)"
-error_symbol = "[❯](red)"
-vimcmd_symbol = "[❮](green)"
+success_symbol = "[❯](fg:mauve)"
+error_symbol = "[❯](fg:red)"
+vimcmd_symbol = "[❮](fg:green)"
 
 [git_branch]
-format = "[$branch]($style)"
-style = "bright-black"
+symbol = " "
+format = "[$symbol$branch]($style)"
+style = "fg:subtext0"
 
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-style = "cyan"
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](fg:peach) ($ahead_behind$stashed)]($style)"
+style = "fg:sky"
 conflicted = "​"
 untracked = "​"
 modified = "​"
@@ -34,19 +68,15 @@ deleted = "​"
 stashed = "≡"
 
 [git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "bright-black"
+format = '([$state( $progress_current/$progress_total)]($style)) '
+style = "fg:subtext0"
 
 [cmd_duration]
-format = "[$duration]($style) "
-style = "yellow"
+min_time = 2000
+format = "took [$duration]($style) "
+style = "fg:yellow"
 
 [python]
 format = "[$virtualenv]($style) "
-style = "bright-black"
-
-[azure]
-disabled = false
-format = 'on [$symbol($subscription)]($style) '
-symbol = '󰠅 '
-style = 'blue bold'
+style = "fg:subtext0"
+detect_extensions = ["py", "ipynb"]

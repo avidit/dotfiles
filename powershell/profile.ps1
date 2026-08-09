@@ -1,16 +1,3 @@
-# https://github.com/dracula/powershell/blob/master/theme/dracula-prompt-configuration.ps1
-# Dracula readline configuration. Requires version 2.0, if you have 1.2 convert to `Set-PSReadlineOption -TokenType`
-Set-PSReadlineOption -Color @{
-    "Command" = [ConsoleColor]::Green
-    "Parameter" = [ConsoleColor]::Gray
-    "Operator" = [ConsoleColor]::Magenta
-    "Variable" = [ConsoleColor]::White
-    "String" = [ConsoleColor]::Yellow
-    "Number" = [ConsoleColor]::Blue
-    "Type" = [ConsoleColor]::Cyan
-    "Comment" = [ConsoleColor]::DarkCyan
-}
-
 # starship
 Invoke-Expression (&starship init powershell)
 

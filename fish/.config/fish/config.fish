@@ -1,5 +1,7 @@
 #!/usr/bin/env fish
 
+# shared environment (keep in sync with .config/shell/env.sh)
+
 # set EDITOR
 set -x EDITOR vim
 
@@ -11,6 +13,10 @@ set -x BREW_PREFIX (brew --prefix)
 set -x PATH $BREW_PREFIX/bin $PATH
 set -x PATH $BREW_PREFIX/sbin $PATH
 
+if test -d $BREW_PREFIX/opt/node@22/bin
+    fish_add_path $BREW_PREFIX/opt/node@22/bin
+end
+
 if test -f /usr/libexec/java_home
     set -x JAVA_HOME (/usr/libexec/java_home)
     set -x PATH $JAVA_HOME/bin $PATH
@@ -21,14 +27,9 @@ if test -d $BREW_PREFIX/opt/groovy/libexec
     set -x PATH $GROOVY_HOME/bin $PATH
 end
 
-if type -q $BREW_PREFIX/bin/npm
-    set -x NODE_PATH (npm root --location=global)
-    set -x PATH $NODE_PATH $PATH
-end
-
 if test -f $BREW_PREFIX/bin/go
-    set -x GOPATH $(go env GOPATH)
-    set -x GOBIN $(go env GOPATH)/bin
+    set -x GOPATH (go env GOPATH)
+    set -x GOBIN (go env GOPATH)/bin
     set -x PATH $GOBIN $PATH
 end
 
@@ -38,21 +39,14 @@ test -d $HOME/bin ; and set -x PATH $HOME/bin $PATH
 
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
-# Load brew formula
-test -e $BREW_PREFIX/share/autojump/autojump.fish ; and source $BREW_PREFIX/share/autojump/autojump.fish
+# direnv
 test -e $BREW_PREFIX/bin/direnv ; and direnv hook fish | source
 
-# iterm2 shell integration
-test -e $HOME/.iterm2_shell_integration.fish ; and source $HOME/.iterm2_shell_integration.fish
-
-# nvm
-set -x nvm_data $HOME/.nvm
-
 # starship
-starship init fish | source
+test -e $BREW_PREFIX/bin/starship ; and starship init fish | source
 
 # zoxide
-zoxide init fish | source
+test -e $BREW_PREFIX/bin/zoxide ; and zoxide init fish | source
 
 # aliases
 alias c='clear'

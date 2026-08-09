@@ -8,15 +8,22 @@ My dotfiles, managed with [GNU Stow](http://www.gnu.org/software/stow/) on macOS
 
 Managed with stow — each subdirectory mirrors the desired layout under `$HOME`.
 
-| Package | Config |
-| --- | --- |
-| `bash/` | [bash](http://www.gnu.org/software/bash/) — `.bashrc` |
-| `brewfile/` | [Homebrew bundle](https://docs.brew.sh/Manpage#bundle-subcommand) — `Brewfile` |
-| `fish/` | [fish](https://fishshell.com/) — `config.fish`, `fish_plugins` |
-| `git/` | [git](https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration) — `.gitconfig`, `.gitignore_global` |
-| `starship/` | [starship](https://starship.rs/) — `starship.toml` |
-| `tmux/` | [tmux](https://tmux.github.io) — `.tmux.conf` |
-| `vim/` | [vim](https://vim.sourceforge.io/) — `.vimrc` |
+| Package | Config | Repo path | System path |
+| --- | --- | --- | --- |
+| `bash/` | [bash](http://www.gnu.org/software/bash/) | [`bash/.bashrc`](bash/.bashrc) | [`~/.bashrc`](bash/.bashrc) |
+| `brewfile/` | [Homebrew bundle](https://docs.brew.sh/Manpage#bundle-subcommand) | [`brewfile/.config/brewfile/Brewfile`](brewfile/.config/brewfile/Brewfile) | [`~/.config/brewfile/Brewfile`](brewfile/.config/brewfile/Brewfile) |
+| `env/` | Shared shell environment (sourced by bash and zsh) | [`env/.config/shell/env.sh`](env/.config/shell/env.sh) | [`~/.config/shell/env.sh`](env/.config/shell/env.sh) |
+| `fish/` | [fish](https://fishshell.com/) | [`fish/.config/fish/config.fish`](fish/.config/fish/config.fish) | [`~/.config/fish/config.fish`](fish/.config/fish/config.fish) |
+| `fish/` | [Fisher](https://github.com/jorgebucaran/fisher) plugins | [`fish/.config/fish/fish_plugins`](fish/.config/fish/fish_plugins) | [`~/.config/fish/fish_plugins`](fish/.config/fish/fish_plugins) |
+| `ghostty/` | [Ghostty](https://ghostty.org/) | [`ghostty/.config/ghostty/config.ghostty`](ghostty/.config/ghostty/config.ghostty) | [`~/.config/ghostty/config.ghostty`](ghostty/.config/ghostty/config.ghostty) |
+| `git/` | [git](https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration) | [`git/.gitconfig`](git/.gitconfig) | [`~/.gitconfig`](git/.gitconfig) |
+| `git/` | [gitignore](https://git-scm.com/docs/gitignore) (global) | [`git/.gitignore_global`](git/.gitignore_global) | [`~/.gitignore_global`](git/.gitignore_global) |
+| `starship/` | [starship](https://starship.rs/) | [`starship/.config/starship.toml`](starship/.config/starship.toml) | [`~/.config/starship.toml`](starship/.config/starship.toml) |
+| `tmux/` | [tmux](https://tmux.github.io) | [`tmux/.tmux.conf`](tmux/.tmux.conf) | [`~/.tmux.conf`](tmux/.tmux.conf) |
+| `vim/` | [vim](https://vim.sourceforge.io/) | [`vim/.vimrc`](vim/.vimrc) | [`~/.vimrc`](vim/.vimrc) |
+| `zsh/` | [zsh](https://www.zsh.org/) | [`zsh/.zshrc`](zsh/.zshrc) | [`~/.zshrc`](zsh/.zshrc) |
+
+Repo path links open the file in this repository. System path links point to the same repo file because stow symlinks each target path to its source file here.
 
 ### macOS Setup
 
@@ -39,7 +46,7 @@ To remove all symlinks: `make uninstall-dotfiles`.
 | File | Description |
 | --- | --- |
 | `git/.gitconfig` | Git config |
-| `git/.gitignore_global` | Global gitignore |
+| [`git/.gitignore_global`](git/.gitignore_global) | [gitignore](https://git-scm.com/docs/gitignore) (global, via `core.excludesFile`) |
 | `starship/.config/starship.toml` | [starship](https://starship.rs/) prompt |
 | `powershell/profile.ps1` | PowerShell profile |
 | `powershell/functions.ps1` | PowerShell helper functions |

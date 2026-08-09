@@ -22,11 +22,3 @@
 :set foldenable     " Turn on folding
 :set mouse=a
 :set wildmenu       " Turn on the Wild menu
-
-" vim-airline settings
-let g:airline#extensions#syntastic#enabled = 1
-let g:airline#extensions#fugitive#enabled = 1
-let g:airline_theme = 'powerlineish'
-let g:airline_powerline_fonts = 1
-let g:airline_detect_modified = 1
-let g:airline_detect_paste = 1
