@@ -33,6 +33,7 @@ help: ## Show available targets
 	@echo "  set-fish-as-default-shell    Set fish as the default shell"
 	@echo "  install-fisher               Install Fisher plugin manager"
 	@echo "  install-fish-plugins         Install fish plugins"
+	@echo "  install-powershell-profile   Link PowerShell profile"
 endif
 
 # ── Full setup ───────────────────────────────────────────────────────────────
@@ -114,6 +115,10 @@ install-fish-plugins: install-fisher ## Install fish plugins from fish_plugins
 	@echo "==> Installing fish plugins..."
 	fish -c "fisher update"
 
+install-powershell-profile: ## Symlink PowerShell profile
+	@echo "==> Linking PowerShell profile..."
+	@pwsh -NoProfile -File "$(DOTFILES)/powershell/install-profile.ps1"
+
 # ── Windows ──────────────────────────────────────────────────────────────────
 
 install-winget-packages: ## Install packages via winget
@@ -126,10 +131,4 @@ install-powershell-modules: ## Install PowerShell modules (PowerShellGet)
 	  Install-PackageProvider NuGet -Force; \
 	  Install-Module -Name PowerShellGet -Force; \
 	  Set-PSRepository PSGallery -InstallationPolicy Trusted \
-	"
-
-install-powershell-profile: ## Symlink PowerShell profile
-	@echo "==> Linking PowerShell profile..."
-	@pwsh -NoProfile -Command ". '$(DOTFILES)/powershell/functions.ps1'; \
-	  Install-DotfileLink -Path $$PROFILE.CurrentUserAllHosts -Target '$(DOTFILES)/powershell/profile.ps1' \
 	"

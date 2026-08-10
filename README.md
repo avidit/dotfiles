@@ -35,9 +35,34 @@ make all
 
 `make all` installs Homebrew packages, sets fish as the default shell, and creates all symlinks via stow.
 
-Individual targets: `make install-homebrew-packages`, `make set-fish-as-default-shell`, `make install-dotfiles`, `make install-fisher`, `make install-fish-plugins`.
+Individual targets: `make install-homebrew-packages`, `make set-fish-as-default-shell`, `make install-dotfiles`, `make install-fisher`, `make install-fish-plugins`, `make install-powershell-profile`.
 
 To remove all symlinks: `make uninstall-dotfiles`.
+
+Optional: `make install-powershell-profile` links the PowerShell profile (see [PowerShell](#powershell) below). Not included in `make all`.
+
+## PowerShell
+
+Cross-platform [PowerShell 7](https://github.com/PowerShell/PowerShell) (`pwsh`) profile. Linked with `make install-powershell-profile` — not managed by stow.
+
+| File | Description |
+| --- | --- |
+| [`powershell/profile.ps1`](powershell/profile.ps1) | Profile: [starship](https://starship.rs/), [zoxide](https://github.com/ajeetdsouza/zoxide), PSReadLine, helper functions |
+| [`powershell/functions.ps1`](powershell/functions.ps1) | Helper functions (`..`, `touch`, `export`, `Invoke-Elevated`, etc.) |
+| [`powershell/install-profile.ps1`](powershell/install-profile.ps1) | Install script (used by Makefile) |
+
+| Platform | System paths |
+| --- | --- |
+| macOS / Linux | [`~/.config/powershell/profile.ps1`](powershell/profile.ps1), [`~/.config/powershell/functions.ps1`](powershell/functions.ps1) |
+| Windows | `%USERPROFILE%\Documents\PowerShell\Profile.ps1`, `%USERPROFILE%\Documents\PowerShell\functions.ps1` |
+
+Requires `pwsh`. Starship and zoxide are loaded when available (via Homebrew on macOS, winget on Windows).
+
+```sh
+make install-powershell-profile
+```
+
+On Windows, this is included in `make all`. On macOS / Linux, run it separately if you use `pwsh`.
 
 ## Windows
 
@@ -48,9 +73,9 @@ To remove all symlinks: `make uninstall-dotfiles`.
 | `git/.gitconfig` | Git config |
 | [`git/.gitignore_global`](git/.gitignore_global) | [gitignore](https://git-scm.com/docs/gitignore) (global, via `core.excludesFile`) |
 | `starship/.config/starship.toml` | [starship](https://starship.rs/) prompt |
-| `powershell/profile.ps1` | PowerShell profile |
-| `powershell/functions.ps1` | PowerShell helper functions |
 | `winget/packages.json` | Package list for winget |
+
+PowerShell profile — see [PowerShell](#powershell) above.
 
 ### Windows Setup
 
