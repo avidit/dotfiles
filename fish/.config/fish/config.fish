@@ -17,8 +17,25 @@ if test -d $BREW_PREFIX/opt/node@22/bin
     fish_add_path $BREW_PREFIX/opt/node@22/bin
 end
 
-if test -f /usr/libexec/java_home
-    set -x JAVA_HOME (/usr/libexec/java_home)
+# Resolve JAVA_HOME without calling java_home (it prints a macOS error when no JVM is installed)
+set -l java_home ""
+for candidate in \
+    "$BREW_PREFIX/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
+    if test -d "$candidate"
+        set java_home $candidate
+        break
+    end
+end
+if test -z "$java_home"
+    for jvm in /Library/Java/JavaVirtualMachines/*/Contents/Home
+        if test -d "$jvm"
+            set java_home $jvm
+            break
+        end
+    end
+end
+if test -n "$java_home"
+    set -x JAVA_HOME $java_home
     set -x PATH $JAVA_HOME/bin $PATH
 end
 

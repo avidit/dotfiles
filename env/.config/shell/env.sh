@@ -12,8 +12,26 @@ if test -d "$BREW_PREFIX/opt/node@22/bin"; then
     export PATH="$BREW_PREFIX/opt/node@22/bin:$PATH"
 fi
 
-if test -f /usr/libexec/java_home; then
-    export JAVA_HOME=$(/usr/libexec/java_home)
+# Resolve JAVA_HOME without calling java_home (it prints a macOS error when no JVM is installed)
+java_home=""
+for candidate in \
+    "$BREW_PREFIX/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
+do
+    if test -d "$candidate"; then
+        java_home="$candidate"
+        break
+    fi
+done
+if test -z "$java_home"; then
+    for jvm in /Library/Java/JavaVirtualMachines/*/Contents/Home; do
+        if test -d "$jvm"; then
+            java_home="$jvm"
+            break
+        fi
+    done
+fi
+if test -n "$java_home"; then
+    export JAVA_HOME="$java_home"
     export PATH=$PATH:$JAVA_HOME/bin
 fi
 
